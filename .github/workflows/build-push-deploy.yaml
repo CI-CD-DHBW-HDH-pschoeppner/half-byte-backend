@@ -54,6 +54,12 @@ jobs:
       contents: read
       packages: write
     steps:
+      - name: Display settings
+        run: |
+          $(echo REGISTRY=$REGISTRY)
+          $(echo CONTAINER_NAME=$CONTAINER_NAME)
+          $(echo IMAGE_NAME=$IMAGE_NAME)
+
       - name: Deploy to Digital Ocean droplet via SSH action
         uses: appleboy/ssh-action@v0.1.3
         with:
