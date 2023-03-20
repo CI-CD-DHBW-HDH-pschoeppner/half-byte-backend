@@ -63,14 +63,14 @@ jobs:
           envs: IMAGE_NAME,CONTAINER_NAME,GITHUB_SHA,COMMAND
           script: |
             # Stop running container
-            docker stop ${CONTAINER_NAME}
+            docker stop $(echo $CONTAINER_NAME)
             
             # Remove old container
-            docker rm ${CONTAINER_NAME}
+            docker rm $(echo $CONTAINER_NAME)
             
             # Run a new container from a new image
             docker run -d \
             --restart always \
             -p 8080:8080 \
-            --name ${CONTAINER_NAME} \
+            --name $(echo $CONTAINER_NAME) \
             $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) $(echo $COMMAND)
