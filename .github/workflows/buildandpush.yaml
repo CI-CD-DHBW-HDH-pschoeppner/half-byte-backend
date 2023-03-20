@@ -1,6 +1,9 @@
 name: Create and publish tic-tac-toe-backend Docker image
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
@@ -68,6 +71,6 @@ jobs:
             docker run -d \
             --restart always \
             --env-file .env \
-            -p 8000:8000 \
+            -p 8080:8080 \
             --name $(echo $IMAGE_NAME) \
             $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) $(echo $COMMAND)
