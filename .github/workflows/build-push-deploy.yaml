@@ -8,7 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ci-cd-dhbw-hdh-pschoeppner/${{ github.event.repository.name }}
-  CONTAINER_NAME: ${{ github.event.repository.name }}
+  CONTAINER_NAME: ${{ github.repository }}
 
 jobs:
   #build-and-push-image:
