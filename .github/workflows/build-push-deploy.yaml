@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ci-cd-dhbw-hdh-pschoeppner/${{ github.event.repository.name }}
+  IMAGE_NAME: ci-cd-dhbw-hdh-pschoeppner/half-byte-backend:main
   CONTAINER_NAME: ${{ github.event.repository.name }}
 
 jobs:
@@ -66,7 +66,7 @@ jobs:
           HOST: ${{ secrets.DIGITAL_OCEAN_IP_ADDRESS }}
           USERNAME: ${{ secrets.DIGITAL_OCEAN_SSH_USER_NAME }}
           KEY: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
-          envs: IMAGE_NAME,CONTAINER_NAME,GITHUB_SHA,COMMAND
+          envs: REGISTRY,IMAGE_NAME,CONTAINER_NAME,COMMAND
           script: |
             ## Stop running container
             #docker stop $(echo $CONTAINER_NAME)
@@ -79,4 +79,4 @@ jobs:
             --restart always \
             -p 8080:8080 \
             --name $(echo $CONTAINER_NAME) \
-            $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) $(echo $COMMAND)
+            $(echo $REGISTRY)/$(echo $IMAGE_NAME) $(echo $COMMAND)
