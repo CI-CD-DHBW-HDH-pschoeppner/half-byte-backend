@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ghcr.io/ci-cd-dhbw-hdh-pschoeppner/half-byte-backend:main
 
 jobs:
   #build-and-push-image:
@@ -59,7 +59,7 @@ jobs:
           HOST: ${{ secrets.DIGITAL_OCEAN_IP_ADDRESS }}
           USERNAME: ${{ secrets.DIGITAL_OCEAN_SSH_USER_NAME }}
           KEY: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
-          envs: IMAGE_NAME,REGISTRY,GITHUB_SHA,COMMAND
+          envs: IMAGE_NAME,GITHUB_SHA,COMMAND
           script: |
             # Stop running container
             docker stop $(echo $IMAGE_NAME)
@@ -70,7 +70,6 @@ jobs:
             # Run a new container from a new image
             docker run -d \
             --restart always \
-            --env-file .env \
             -p 8080:8080 \
             --name $(echo $IMAGE_NAME) \
-            $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) $(echo $COMMAND)
+            $(echo $IMAGE_NAME) $(echo $COMMAND)
