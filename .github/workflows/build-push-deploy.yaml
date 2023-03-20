@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ci-cd-dhbw-hdh-pschoeppner/half-byte-backend:main
+  IMAGE_NAME: ci-cd-dhbw-hdh-pschoeppner/half-byte-backend
   CONTAINER_NAME: ${{ github.event.repository.name }}
 
 jobs:
@@ -79,4 +79,4 @@ jobs:
             --restart always \
             -p 8080:8080 \
             --name $(echo $CONTAINER_NAME) \
-            $(echo $REGISTRY)/$(echo $IMAGE_NAME) $(echo $COMMAND)
+            $(echo $REGISTRY)/$(echo $IMAGE_NAME):main $(echo $COMMAND)
