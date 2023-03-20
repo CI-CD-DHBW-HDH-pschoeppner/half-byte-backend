@@ -8,4 +8,4 @@ pluginManagement {
         id "${quarkusPluginId}" version "${quarkusPluginVersion}"
     }
 }
-rootProject.name='tic-tac-toe-backend'
+rootProject.name="half-byte-backend"

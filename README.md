@@ -1,4 +1,4 @@
-# tic-tac-toe-backend
+# half-byte-backend
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -40,7 +40,7 @@ You can create a native executable using:
 
 Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
 ```shell script
-./gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
+./gradlew build "-Dquarkus.package.type=native" "-Dquarkus.native.container-build=true"
 ```
 
 You can then execute your native executable with: `./build/tic-tac-toe-backend-1.0.0-SNAPSHOT-runner`
