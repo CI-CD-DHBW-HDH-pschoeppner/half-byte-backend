@@ -65,6 +65,9 @@ jobs:
             # Stop running container
             docker stop $(echo $CONTAINER_NAME) || true
             
+            # Remove old container
+            docker rm -f $(echo $CONTAINER_NAME) || true
+            
             # Run a new container from a new image
             docker run --rm -d \
             --restart always \
