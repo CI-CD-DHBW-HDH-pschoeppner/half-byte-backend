@@ -1,4 +1,4 @@
-name: Create and publish tic-tac-toe-backend Docker image
+name: Create, publish and deploy half-byte-backend Docker image
 
 on:
   push:
