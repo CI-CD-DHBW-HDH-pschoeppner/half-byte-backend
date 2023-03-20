@@ -69,7 +69,7 @@ jobs:
             docker rm -f $(echo $CONTAINER_NAME) || true
             
             # Run a new container from a new image
-            docker run --rm -d \
+            docker run -d \
             --restart always \
             -p 8080:8080 \
             --name $(echo $CONTAINER_NAME) \
