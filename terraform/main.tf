@@ -33,3 +33,9 @@ variable "do_token" {}
 provider "digitalocean" {
   token = var.do_token
 }
+
+
+output "public_ip" {
+  # Attribute einer Resource werden mit <name>.<attribute> referenziert
+  value = digitalocean_droplet.half-byte-backend.ipv4_address
+}
